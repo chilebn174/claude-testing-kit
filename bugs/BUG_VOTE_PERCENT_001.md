@@ -44,3 +44,60 @@ Chưa xác nhận được (chưa có source code/ứng dụng cụ thể để 
 
 - Đây là **bug log dạng manual** (ghi nhận theo mô tả nghiệp vụ), chưa có URL/repo ứng dụng cụ thể kèm theo nên **chưa thực hiện investigate trên UI/DOM thực tế** theo quy tắc bắt buộc của dự án (`playwright_rules.md` — không đoán locator, phải inspect thực tế).
 - Khi có URL hoặc repo chứa source code của tính năng bình chọn, cần bổ sung: ảnh chụp màn hình/video minh chứng, log console/network, và inspect DOM thực tế trước khi viết automation test hoặc xác định chính xác vị trí code cần fix.
+
+---
+
+## Nội dung để tạo Issue trên Jira (copy thủ công)
+
+> Copy từng field bên dưới vào form "Create Issue" trên Jira.
+
+**Project:** *(điền project key, VD: PROJ)*
+
+**Issue Type:** Bug
+
+**Summary:**
+```
+[Voting] % bình chọn của đáp án khác bị thay đổi khi user chuyển đáp án
+```
+
+**Priority:** High
+
+**Components:** Voting / Poll
+
+**Affects Version/s:** *(điền version hiện tại đang test, nếu có)*
+
+**Labels:** `manual-bug`, `voting`, `calculation`, `ui-display`
+
+**Environment:**
+```
+Chưa xác định — bổ sung: Browser/App version, OS, Device khi có môi trường test cụ thể.
+```
+
+**Description:**
+```
+*Mô tả:*
+Khi user đã bình chọn 1 đáp án, sau đó đổi sang đáp án khác trong cùng câu hỏi,
+% bình chọn hiển thị của các đáp án KHÔNG liên quan (không phải đáp án cũ/mới)
+bị thay đổi sai, dù số lượt bình chọn thực tế của các đáp án đó không đổi.
+
+*Steps to Reproduce:*
+1. Vào câu hỏi bình chọn có >= 3 đáp án (A, B, C, D), mỗi đáp án đã có vote khác nhau.
+2. Chọn đáp án A. Ghi nhận % hiển thị của A, B, C, D.
+3. Đổi lựa chọn từ A sang B (không đụng tới C, D).
+4. So sánh % của C, D trước và sau khi đổi.
+
+*Actual Result:*
+% của C và D (không liên quan đến lượt đổi) bị thay đổi.
+
+*Expected Result:*
+Chỉ % của đáp án cũ (A) và đáp án mới (B) được cập nhật lại. % các đáp án
+khác (C, D...) phải giữ nguyên.
+
+*Suspected root cause (chưa xác nhận):*
+- Tổng số vote (denominator) bị tính sai tạm thời khi chuyển đổi (cộng vote
+  mới trước khi trừ vote cũ, hoặc ngược lại).
+- Toàn bộ % bị tính lại + làm tròn (rounding) từ đầu sau mỗi lần đổi, khiến
+  các đáp án không liên quan cũng lệch % do sai số làm tròn.
+```
+
+**Attachments:** *(đính kèm screenshot/video minh chứng khi có môi trường test thực tế)*
