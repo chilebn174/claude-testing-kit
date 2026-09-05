@@ -26,9 +26,9 @@ Bộ Kit này **không chỉ dành riêng cho Automation** — mà được thi�
 ```
 claude-testing-kit/
 ├── .claude/
-│   ├── commands/       # 16 lệnh tùy chỉnh (slash commands)
+│   ├── commands/       # 17 lệnh tùy chỉnh (slash commands)
 │   ├── rules/          # Quy tắc bắt buộc AI phải tuân theo
-│   ├── skills/         # 10 kỹ năng chuyên biệt cho AI
+│   ├── skills/         # 11 kỹ năng chuyên biệt cho AI
 │   └── settings.json   # Cấu hình quyền hạn cho Claude Code
 ├── plans/
 │   ├── manual/          # Quy trình 6 bước sinh Manual Test Cases (AI-RBT)
@@ -42,9 +42,9 @@ claude-testing-kit/
 
 | Thư mục | Vai trò |
 |---------|--------|
-| `commands/` | 16 slash commands: `/generate_automation_from_testcases`, `/generate_manual_testcases_rbt`, `/generate_cross_module_test_plan`, `/generate_combinatorial_test_data`... |
+| `commands/` | 17 slash commands: `/generate_automation_from_testcases`, `/generate_manual_testcases_rbt`, `/generate_manual_testcases_no_doc`, `/generate_cross_module_test_plan`, `/generate_combinatorial_test_data`... |
 | `rules/` | Quy tắc bắt buộc: POM, locator strategy, smart waits, Playwright/Selenium/Appium rules |
-| `skills/` | 10 kỹ năng chuyên biệt: automation engineer, manual testing, UI debug, locator healer, test data generator, framework architect, jira integration... |
+| `skills/` | 11 kỹ năng chuyên biệt: automation engineer, manual testing (kể cả khi chưa có tài liệu), UI debug, locator healer, test data generator, framework architect, jira integration... |
 | `settings.json` | Cấu hình quyền hạn: cho phép/cấm các hành động cụ thể (đọc file, chạy test, push code...) |
 
 > **📌 Lưu ý về cấu trúc:** Trong Claude Code, **workflows** được gọi là **commands** và đặt trong `.claude/commands/`. Tên file dùng dấu gạch dưới (`_`). Ví dụ: `generate_automation_from_testcases.md`.

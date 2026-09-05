@@ -150,6 +150,7 @@ Agent sử dụng skills trong `.claude/skills/` tùy theo nhiệm vụ:
 | -------------------------- | ----------------------------------------------------------------------------------------- |
 | `qa_automation_engineer` | Master skill cho automation — điều phối toàn bộ quy trình                          |
 | `rbt_manual_testing`     | Master skill cho manual testing — 2 modes: QUICK (sinh TC nhanh) và FULL RBT (6 bước) |
+| `manual_testing_no_doc`  | Sinh manual test cases khi CHƯA CÓ tài liệu — khám phá UI thật trước rồi mới chạy FULL RBT |
 | `requirements_analyzer`  | Phân tích requirements từ website/tài liệu                                           |
 | `ui_debug_agent`         | Inspect UI/DOM, thu thập locators                                                        |
 | `smart_locator_agent`    | Sinh locator mới ổn định                                                              |
@@ -227,6 +228,7 @@ Agent sử dụng workflows trong `.claude/commands/` qua slash commands:
 | `/generate_requirements_from_website`   | Sinh requirements từ website/module                        |
 | `/analyze_requirement_document`         | Phân tích requirement document (Jira/.doc) — sinh tài liệu phân tích, KHÔNG sinh TC |
 | `/generate_manual_testcases_rbt`        | Sinh manual test cases theo AI-RBT 6 bước (FULL RBT mode) |
+| `/generate_manual_testcases_no_doc`     | Sinh manual test cases khi CHƯA CÓ tài liệu — khám phá UI thật (Bước 0) rồi chạy FULL RBT |
 | `/generate_testcases_from_requirements` | Sinh test cases nhanh từ requirements (QUICK mode)         |
 | `/generate_automation_from_testcases`   | Chuyển manual test cases → automation scripts             |
 | `/generate_automation_from_ui_flow`     | Sinh automation từ UI flow trực tiếp                     |
